@@ -63,7 +63,11 @@ export default function Callback() {
         .post(
           "https://applefy-backend.onrender.com/login",
           { code },
-          { withCredentials: true }
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "https://applefy.vercel.app",
+            },
+          }
         )
         .then((res) => {
           localStorage.setItem(
