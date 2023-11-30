@@ -63,6 +63,7 @@ export default function Callback() {
         .post(
           "https://applefy-backend.onrender.com/login",
           { code },
+          { withCredentials: true }
         )
         .then((res) => {
           localStorage.setItem(
