@@ -60,7 +60,17 @@ export default function Callback() {
       console.log("GG");
       console.log(code);
       axios
-        .post("https://applefy-backend.onrender.com/login", { code })
+        .post(
+          "https://applefy-backend.onrender.com/login",
+          { code },
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "https://applefy.vercel.app", // Si es necesario, ajusta el origen permitido aquí
+            },
+          }
+        )
         .then((res) => {
           localStorage.setItem(
             "last_update",

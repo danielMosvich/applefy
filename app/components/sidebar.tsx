@@ -27,9 +27,19 @@ export function Sidebar() {
     if (diferenciaEnSegundos >= 3500) {
       console.log("Ha pasado una hora o más desde el valor antiguo.");
       axios
-        .post("http://localhost:3001/refresh", {
-          refreshToken: localStorage.getItem("refresh_token"),
-        })
+        .post(
+          "https://applefy-backend.onrender.com/refresh",
+          {
+            refreshToken: localStorage.getItem("refresh_token"),
+          },
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "https://applefy.vercel.app", // Si es necesario, ajusta el origen permitido aquí
+            },
+          }
+        )
         .then((res) => {
           console.log("REFRESH DATA");
           console.log(res.data);
