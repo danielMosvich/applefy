@@ -17,7 +17,7 @@ export default function useAuth(code: string | null) {
   useEffect(() => {
     if (code) {
       axios
-        .post("http://localhost:3001/login", {
+        .post("https://applefy-backend.onrender.com/login", {
           code,
         })
         .then((res) => {

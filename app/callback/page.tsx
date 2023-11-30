@@ -60,7 +60,7 @@ export default function Callback() {
       console.log("GG");
       console.log(code);
       axios
-        .post("http://localhost:3001/login", { code })
+        .post("https://applefy-backend.onrender.com/login", { code })
         .then((res) => {
           localStorage.setItem(
             "last_update",
