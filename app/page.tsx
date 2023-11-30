@@ -2,7 +2,7 @@
 const url: string = "https://accounts.spotify.com/authorize";
 const client_id: string = "9e0d92d6c8c641448e32478bc8789ecc";
 const client_secret = "d417d703420a4a11b5fa32584ec51247";
-const redirect_uri: string = "http://localhost:3000/callback";
+const redirect_uri: string = "https://applefy.vercel.app/callback";
 const scopes: string[] = [
   "ugc-image-upload",
   "user-read-recently-played",
