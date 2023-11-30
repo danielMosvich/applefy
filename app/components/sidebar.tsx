@@ -33,7 +33,7 @@ export function Sidebar() {
             refreshToken: localStorage.getItem("refresh_token"),
           },
           {
-            withCredentials: true,
+            withCredentials: false,
             headers: {
               "Content-Type": "application/json",
             },
