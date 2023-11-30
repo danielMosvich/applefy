@@ -31,12 +31,6 @@ export function Sidebar() {
           "https://applefy-backend.onrender.com/refresh",
           {
             refreshToken: localStorage.getItem("refresh_token"),
-          },
-          {
-            withCredentials: false,
-            headers: {
-              "Content-Type": "application/json",
-            },
           }
         )
         .then((res) => {
