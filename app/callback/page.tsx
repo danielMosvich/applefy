@@ -68,7 +68,6 @@ export default function Callback() {
             headers: {
               "Content-Type": "application/json",
               Origin: "https://applefy.vercel.app", // Reemplaza con tu dominio frontend
-              Referer: "https://applefy.vercel.app", // Reemplaza con tu dominio frontend
             },
           }
         )
