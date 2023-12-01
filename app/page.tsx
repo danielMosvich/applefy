@@ -37,14 +37,14 @@ export default function Home() {
     <main className="w-full h-screen p-5">
       {!login ? (
         <a
-          href="http://localhost:3001/login"
+          href="https://applefy-back.onrender.com/"
           className="bg-rose-500 text-white px-5 py-3 rounded-lg font-[550] "
         >
           LOGIN ♥
         </a>
       ) : (
-        <a
-          href="http://localhost:3001/login"
+        <div
+          // href="http://localhost"
           className="bg-rose-500 text-white px-5 py-3 rounded-lg font-[550] "
           onClick={() => {
             localStorage.clear();
@@ -52,7 +52,7 @@ export default function Home() {
           }}
         >
           LOG OUT
-        </a>
+        </div>
       )}
     </main>
   );
