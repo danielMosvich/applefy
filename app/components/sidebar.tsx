@@ -13,39 +13,39 @@ export function Sidebar() {
       setToken(tokenLocal);
     }
   }, []);
-  useEffect(() => {
-    console.log(
-      Math.floor(Date.now()) -
-        Math.floor(Number(localStorage.getItem("last_update")))
-    );
-    const valorAntiguo = Math.floor(
-      Number(localStorage.getItem("last_update"))
-    );
-    const valorActual = Math.floor(Date.now() / 1000);
-    const diferenciaEnSegundos = valorActual - valorAntiguo;
-    console.log("tiempo transcurrido", diferenciaEnSegundos);
-    if (diferenciaEnSegundos >= 3500) {
-      console.log("Ha pasado una hora o más desde el valor antiguo.");
-      axios
-        .post(
-          "https://applefy-backend.onrender.com/refresh",
-          {
-            refreshToken: localStorage.getItem("refresh_token"),
-          }
-        )
-        .then((res) => {
-          console.log("REFRESH DATA");
-          console.log(res.data);
-          localStorage.setItem("access_token", res.data.accessToken);
-          localStorage.setItem(
-            "last_update",
-            JSON.stringify(Date.now() / 1000)
-          );
-        });
-    } else {
-      console.log("No ha pasado una hora desde el valor antiguo.");
-    }
-  }, [pathname]);
+  // useEffect(() => {
+  //   console.log(
+  //     Math.floor(Date.now()) -
+  //       Math.floor(Number(localStorage.getItem("last_update")))
+  //   );
+  //   const valorAntiguo = Math.floor(
+  //     Number(localStorage.getItem("last_update"))
+  //   );
+  //   const valorActual = Math.floor(Date.now() / 1000);
+  //   const diferenciaEnSegundos = valorActual - valorAntiguo;
+  //   console.log("tiempo transcurrido", diferenciaEnSegundos);
+  //   if (diferenciaEnSegundos >= 3500) {
+  //     console.log("Ha pasado una hora o más desde el valor antiguo.");
+  //     axios
+  //       .post(
+  //         "https://applefy-backend.onrender.com/refresh",
+  //         {
+  //           refreshToken: localStorage.getItem("refresh_token"),
+  //         }
+  //       )
+  //       .then((res) => {
+  //         console.log("REFRESH DATA");
+  //         console.log(res.data);
+  //         localStorage.setItem("access_token", res.data.accessToken);
+  //         localStorage.setItem(
+  //           "last_update",
+  //           JSON.stringify(Date.now() / 1000)
+  //         );
+  //       });
+  //   } else {
+  //     console.log("No ha pasado una hora desde el valor antiguo.");
+  //   }
+  // }, [pathname]);
   return (
     <div
       className={`w-full h-20 fixed bottom-0 grid grid-cols-3 z-40 bg-white/60 backdrop-blur-2xl`}

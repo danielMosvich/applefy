@@ -1,8 +1,10 @@
-// "use client";
+"use client";
+import { useState, useEffect } from "react";
 const url: string = "https://accounts.spotify.com/authorize";
 const client_id: string = "9e0d92d6c8c641448e32478bc8789ecc";
 const client_secret = "d417d703420a4a11b5fa32584ec51247";
-const redirect_uri: string = "https://applefy.vercel.app/callback";
+// const redirect_uri: string = "https://applefy.vercel.app/callback";
+const redirect_uri: string = "http://localhost:3000/callback";
 const scopes: string[] = [
   "ugc-image-upload",
   "user-read-recently-played",
@@ -24,20 +26,34 @@ const scopes: string[] = [
 ];
 const scope = scopes.join("%20");
 export default function Home() {
-  // function handleLogin() {
-  //   (
-  //     window as Window
-  //   ).location = `${url}?client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${redirect_uri}&scope=${scope}&response_type=code&show_dialog=true`;
-  // }
+  const [login, setLogin] = useState(false);
 
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      setLogin(true);
+    }
+  }, []);
   return (
     <main className="w-full h-screen p-5">
-      {/* <button onClick={() => handleLogin()}>XD</button> */}
-      <a
-        href={`${url}?client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${redirect_uri}&scope=${scope}&response_type=code&show_dialog=true`}
-      >
-        LOGIN
-      </a>
+      {!login ? (
+        <a
+          href="http://localhost:3001/login"
+          className="bg-rose-500 text-white px-5 py-3 rounded-lg font-[550] "
+        >
+          LOGIN ♥
+        </a>
+      ) : (
+        <a
+          href="http://localhost:3001/login"
+          className="bg-rose-500 text-white px-5 py-3 rounded-lg font-[550] "
+          onClick={() => {
+            localStorage.clear();
+            setLogin(false);
+          }}
+        >
+          LOG OUT
+        </a>
+      )}
     </main>
   );
 }
