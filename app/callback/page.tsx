@@ -64,8 +64,11 @@ export default function Callback() {
           "https://applefy-backend.onrender.com/login",
           { code },
           {
+            withCredentials: true,
             headers: {
-              "Access-Control-Allow-Origin": "https://applefy.vercel.app",
+              "Content-Type": "application/json",
+              Origin: "https://applefy.vercel.app", // Reemplaza con tu dominio frontend
+              Referer: "https://applefy.vercel.app", // Reemplaza con tu dominio frontend
             },
           }
         )
