@@ -22,7 +22,7 @@ export default function Player() {
   if (song) {
     return (
       <>
-        <div className="fixed bottom-20  w-full px-4 flex justify-center items-center z-[42] bg-white/60 backdrop-blur-2xl">
+        <div className="fixed bottom-20 w-full px-4 flex justify-center items-center z-[42]">
           {song && (
             <audio
               ref={audioRef}

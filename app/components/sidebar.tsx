@@ -2,8 +2,10 @@
 import axios from "axios";
 import { useRouter, usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { usePlayerStore } from "../store/player";
 
 export function Sidebar() {
+  const { song } = usePlayerStore();
   const { push } = useRouter();
   const pathname = usePathname();
   const [token, setToken] = useState<string | null>(null);
@@ -13,55 +15,24 @@ export function Sidebar() {
       setToken(tokenLocal);
     }
   }, []);
-  // useEffect(() => {
-  //   console.log(
-  //     Math.floor(Date.now()) -
-  //       Math.floor(Number(localStorage.getItem("last_update")))
-  //   );
-  //   const valorAntiguo = Math.floor(
-  //     Number(localStorage.getItem("last_update"))
-  //   );
-  //   const valorActual = Math.floor(Date.now() / 1000);
-  //   const diferenciaEnSegundos = valorActual - valorAntiguo;
-  //   console.log("tiempo transcurrido", diferenciaEnSegundos);
-  //   if (diferenciaEnSegundos >= 3500) {
-  //     console.log("Ha pasado una hora o más desde el valor antiguo.");
-  //     axios
-  //       .post(
-  //         "https://applefy-backend.onrender.com/refresh",
-  //         {
-  //           refreshToken: localStorage.getItem("refresh_token"),
-  //         }
-  //       )
-  //       .then((res) => {
-  //         console.log("REFRESH DATA");
-  //         console.log(res.data);
-  //         localStorage.setItem("access_token", res.data.accessToken);
-  //         localStorage.setItem(
-  //           "last_update",
-  //           JSON.stringify(Date.now() / 1000)
-  //         );
-  //       });
-  //   } else {
-  //     console.log("No ha pasado una hora desde el valor antiguo.");
-  //   }
-  // }, [pathname]);
   return (
     <div
-      className={`w-full h-20 fixed bottom-0 grid grid-cols-3 z-40 bg-white/60 backdrop-blur-2xl`}
+      className={`w-full ${
+        song ? "h-32 pt-16" : "h-20 pt-4"
+      } fixed bottom-0 grid grid-cols-3 z-40 bg-white/60 backdrop-blur-2xl `}
     >
       <div
         onClick={() => {
           push("/");
         }}
-        className={`cursor-pointer flex justify-center items-center flex-col gap-1 font-[500] ${
+        className={`cursor-pointer flex items-center flex-col gap-1 font-[500] ${
           pathname === "/" ? "text-rose-500" : "text-neutral-500"
         }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="2rem"
-          height="2rem"
+          width="1.5rem"
+          height="1.5rem"
           viewBox="0 0 24 24"
         >
           <path
@@ -77,14 +48,14 @@ export function Sidebar() {
         onClick={() => {
           push("/search");
         }}
-        className={`cursor-pointer flex justify-center items-center flex-col gap-1 font-[500] ${
+        className={`cursor-pointer flex items-center flex-col gap-1 font-[500] ${
           pathname === "/search" ? "text-rose-500" : "text-neutral-500"
         }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="2rem"
-          height="2rem"
+          width="1.5rem"
+          height="1.5rem"
           viewBox="0 0 24 24"
         >
           <path
@@ -98,14 +69,14 @@ export function Sidebar() {
         onClick={() => {
           push("/library");
         }}
-        className={`cursor-pointer flex justify-center items-center flex-col gap-1 font-[500] ${
+        className={`cursor-pointer flex  items-center flex-col gap-1 font-[500] ${
           pathname === "/library" ? "text-rose-500" : "text-neutral-500"
         }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="2rem"
-          height="2rem"
+          width="1.5rem"
+          height="1.5rem"
           viewBox="0 0 24 24"
         >
           <g fill="currentColor">

@@ -94,13 +94,10 @@ export default function Library() {
     <div className="px-5">
       {data ? (
         <div className="py-[88px]">
-          {/* <button onClick={() => console.log(data, playlists, follows)}>
-            xdd
-          </button> */}
           <div className="fixed w-full left-0 p-5 z-40 top-0 bg-white/90 backdrop-blur-xl flex items-center h-fit justify-between">
             <h2 className="text-4xl font-bold">Biblioteca</h2>
             <div className="flex items-center gap-3">
-              {data.images[1] && (
+              {data.images && data.images[1] && (
                 <div className="bg-red-500 rounded-full w-12 h-12 overflow-hidden">
                   <Image
                     unoptimized
@@ -137,12 +134,12 @@ export default function Library() {
                 >
                   <div className="w-full h-fit overflow-hidden rounded-md">
                     <Image
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover max-w-[165px] min-w-[165px] min-h-[165px] max-h-[165px]"
                       alt="xd"
                       unoptimized
                       src={e.images[0]?.url}
-                      width={e.images[0]?.width ? e.images[0]?.width : 0}
-                      height={e.images[0]?.height ? e.images[0]?.height : 0}
+                      width={165}
+                      height={165}
                     />
                   </div>
                   <h2 className="text-base mt-2 font-[500] whitespace-nowrap text-ellipsis overflow-hidden">

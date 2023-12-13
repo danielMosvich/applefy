@@ -2,6 +2,7 @@
 import getPlaylist from "@/app/api/getPlaylist";
 import { PlaylistTrackListProps } from "@/app/components/PlaylistTracksProps";
 import PlaylistTrackList from "@/app/components/playlistTrackList";
+import Spiner from "@/app/components/spiner/spiner";
 import { usePlayerStore } from "@/app/store/player";
 import { error } from "console";
 import Image from "next/image";
@@ -147,7 +148,7 @@ export default function Playlist({ params }: paramsProps) {
           width={300}
           height={300}
           alt="xd"
-          className="aspect-square w-[250px] mx-auto rounded-md shadow-2xl"
+          className="aspect-square w-[250px] mx-auto rounded-md shadow-2xl object-cover"
           src={data.images[0].url}
         />
       </div>
@@ -251,7 +252,7 @@ export default function Playlist({ params }: paramsProps) {
     </div>
   ) : (
     <div className="loader shadow-2xl text-rose-500 font-[600] text-2xl uppercase">
-      loading...
+      <Spiner></Spiner>
     </div>
   );
 }

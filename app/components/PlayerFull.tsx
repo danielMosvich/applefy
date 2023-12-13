@@ -6,14 +6,14 @@ import { usePlayerStore } from "../store/player";
 
 import { usePalette } from "color-thief-react";
 import { RefObject, useEffect, useRef } from "react";
-import { Slider } from "@nextui-org/react";
-import VolumeBar from "./VolumeBar";
 import LinearGradientSlider from "./LinearGradientSlider";
+import useDeviceInfo from "../hooks/useDeviceInfo";
 
 type PlayerFullProps = {
   audioRef: RefObject<HTMLAudioElement>;
 };
 export default function PlayerFull({ audioRef }: PlayerFullProps) {
+  const { isMobile, isIOS, isAndroid } = useDeviceInfo();
   const { song, imageHD, image, name, artists, playGlobal, setPlayGlobal } =
     usePlayerStore();
   const { data, loading, error } = usePalette(image, 5, "hex", {
@@ -59,7 +59,7 @@ export default function PlayerFull({ audioRef }: PlayerFullProps) {
         </div>
         <div className="w-full h-full fixed top-0 left-0 p-8 pt-0">
           <div className="w-12 text-red-50 bg-gray-50/50 h-1 rounded-full mx-auto mb-16 mt-5">
-            {}
+            {/* !SEPARATOR TOP SLIDER */}
           </div>
           <Image
             className="w-full object-cover rounded-lg shadow-lg"
@@ -169,11 +169,11 @@ export default function PlayerFull({ audioRef }: PlayerFullProps) {
               </svg>
             </button>
           </div>
-          <div className="mt-10">
-            {/* <VolumeBar audioRef={audioRef} /> */}
-
-            <LinearGradientSlider  audioRef={audioRef}/>
-          </div>
+          {!isMobile && (
+            <div className="mt-10">
+              <LinearGradientSlider audioRef={audioRef} />
+            </div>
+          )}
         </div>
       </motion.div>
     );

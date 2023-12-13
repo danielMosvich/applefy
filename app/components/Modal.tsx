@@ -27,7 +27,7 @@ const Modal = ({ showModal, setShowModal, children }: ModalProps) => {
         isDownRef.current = false;
       }
 
-      if (lastYRef.current < firstTouch.clientY && currentY > 100) {
+      if (lastYRef.current < firstTouch.clientY && currentY > 30) {
         isDownRef.current = true;
       }
 

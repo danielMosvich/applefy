@@ -80,7 +80,7 @@ async function getArtist(id: string) {
             Authorization: `Bearer ${token}`,
           },
         }),
-        fetch(`https://api.spotify.com/v1/artists/${id}/albums?limit=50`, {
+        fetch(`https://api.spotify.com/v1/artists/${id}/albums`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
