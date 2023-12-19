@@ -7,7 +7,7 @@ export default function LoginPage() {
         href="https://applefy-back.onrender.com/login"
         className="p-5 rounded-2xl mt-4 h-96 shadow-xl flex flex-col justify-center items-center"
         style={{
-          background: "url('./loginImage.svg')",
+          background: "url('loginImage.svg')",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
