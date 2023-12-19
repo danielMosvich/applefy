@@ -2,6 +2,7 @@
 import getPlaylist from "@/app/api/getPlaylist";
 import { PlaylistTrackListProps } from "@/app/components/PlaylistTracksProps";
 import PlaylistTrackList from "@/app/components/playlistTrackList";
+import ReturnPageButton from "@/app/components/returnPageButton";
 import Spiner from "@/app/components/spiner/spiner";
 import { usePlayerStore } from "@/app/store/player";
 import { error } from "console";
@@ -142,6 +143,7 @@ export default function Playlist({ params }: paramsProps) {
   }, [id]);
   return data ? (
     <div className="px-5 py-20">
+      <ReturnPageButton />
       <div>
         <Image
           unoptimized

@@ -11,6 +11,8 @@ import "./flickity.css";
 import { Pagination } from "swiper/modules";
 import { usePlayerStore } from "@/app/store/player";
 import { useRouter } from "next/navigation";
+import Spiner from "@/app/components/spiner/spiner";
+import ReturnPageButton from "@/app/components/returnPageButton";
 interface ArtistParamsProps {
   params: { id: string };
 }
@@ -221,10 +223,10 @@ export default function Artist({ params }: ArtistParamsProps) {
   }, []);
   return data ? (
     <div className=" w-full min-h-screen pt-[390px]">
+      <ReturnPageButton slider title={data.artist.name && data.artist.name} />
       {data.artist.images && (
         <div
           style={{
-            // objectPosition: "center center",
             transform: `translateY(-${scrollY * 0.3}px)`,
           }}
           className="w-full flex flex-col bg-green-200  max-h-[390px] h-[390px] overflow-hidden fixed z-10 top-0 transition-none"
@@ -451,6 +453,8 @@ export default function Artist({ params }: ArtistParamsProps) {
       </section>
     </div>
   ) : (
-    <div>loading</div>
+    <div className="loader shadow-2xl text-rose-500 font-[600] text-2xl uppercase">
+      <Spiner></Spiner>
+    </div>
   );
 }

@@ -43,32 +43,28 @@ export default function Player() {
           )}
           <div
             style={{ boxShadow: "0 2px 14px rgba(0,0,0,0.2)" }}
-            className=" w-full p-2 flex bg-white rounded-xl overflow-hidden"
+            className=" w-full p-[7px] flex bg-white rounded-xl overflow-hidden"
           >
             <div
               onClick={() => setShowModal(true)}
               className="flex w-full gap-3 items-center overflow-hidden"
             >
-              <div className="rounded-lg overflow-hidden w-12 h-12 min-w-[48px] min-h-[48px] shadow-sm border-[1px] border-neutral-200">
+              <div className="rounded-lg overflow-hidden w-10 h-10 min-w-[40px] min-h-[40px] shadow-sm border-[1px] border-neutral-200">
                 <Image
                   className="object-cover w-full h-full "
                   unoptimized
                   src={image}
-                  width={48}
-                  height={48}
+                  width={40}
+                  height={40}
                   alt="xd"
                 />
               </div>
               <div className="flex flex-col justify-center w-full overflow-hidden">
-                <h3 className="font-[400] w-full text-base whitespace-nowrap overflow-hidden text-ellipsis">
+                <h3 className="font-[500] w-full text-base whitespace-nowrap overflow-hidden text-ellipsis">
                   {name}
                 </h3>
-                {/* <h4 className="text-black/60 text-base font-[400] -translate-y-1  whitespace-nowrap overflow-hidden text-ellipsis">
-                {artists}
-              </h4> */}
               </div>
             </div>
-            {/* {String(playGlobal)} */}
             <div className="flex items-center justify-end mr-3">
               {!playGlobal ? (
                 <button

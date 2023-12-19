@@ -18,7 +18,7 @@ export function Sidebar() {
   return (
     <div
       className={`w-full ${
-        song ? "h-32 pt-[76px]" : "h-16 pt-3"
+        song ? "h-28 pt-[60px]" : "h-16 pt-3"
       } fixed bottom-0 grid grid-cols-3 z-40 bg-white/60 backdrop-blur-2xl `}
     >
       <div

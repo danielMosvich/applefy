@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { AlbumProps } from "./albumProps";
 import Image from "next/image";
 import { Data, usePlayerStore } from "@/app/store/player";
+import ReturnPageButton from "@/app/components/returnPageButton";
+import Spiner from "@/app/components/spiner/spiner";
 
 export default function Album({ params }: { params: { id: string } }) {
   const [album, setAlbum] = useState<AlbumProps | null>(null);
@@ -52,6 +54,7 @@ export default function Album({ params }: { params: { id: string } }) {
   }, []);
   return album ? (
     <div className="mt-10 pb-40">
+      <ReturnPageButton />
       <div className="p-5">
         <Image
           className="w-2/3 rounded-lg shadow-lg mx-auto"
@@ -140,6 +143,8 @@ export default function Album({ params }: { params: { id: string } }) {
       </div>
     </div>
   ) : (
-    <div>loading</div>
+    <div className="loader shadow-2xl text-rose-500 font-[600] text-2xl uppercase">
+      <Spiner></Spiner>
+    </div>
   );
 }
