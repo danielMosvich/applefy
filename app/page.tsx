@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import LoginPage from "./components/loginPage/loginPage";
+import LogoutPage from "./components/logoutPage/logoutPage";
 const scopes: string[] = [
   "ugc-image-upload",
   "user-read-recently-played",
@@ -34,16 +35,7 @@ export default function Home() {
       {!login ? (
         <LoginPage />
       ) : (
-        <div
-          // href="http://localhost"
-          className="bg-rose-500 text-white px-5 py-3 rounded-lg font-[550] "
-          onClick={() => {
-            localStorage.clear();
-            setLogin(false);
-          }}
-        >
-          LOG OUT
-        </div>
+        <LogoutPage setLogin={setLogin}/>
       )}
       {/* {!login ? (
         <a

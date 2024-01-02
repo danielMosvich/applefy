@@ -82,6 +82,10 @@ export default function Library() {
   const [playlists, setPlaylists] = useState<playlistProps | null>(null);
   const [follows, setFollows] = useState<followsProps | null>(null);
   const { push } = useRouter();
+  function logOut() {
+    localStorage.clear();
+    push("/");
+  }
   useEffect(() => {
     getLibrary().then((res) => {
       const { data, follows, playlists } = res as ResponseType;
@@ -91,7 +95,7 @@ export default function Library() {
     });
   }, []);
   return (
-    <div className="px-5">
+    <div className="px-5 pb-40">
       {data ? (
         <div className="py-[88px]">
           <div className="fixed w-full left-0 p-5 z-40 top-0 bg-white/90 backdrop-blur-xl flex items-center h-fit justify-between">
@@ -180,6 +184,23 @@ export default function Library() {
       ) : (
         <div></div>
       )}
+      <button
+        className="bg-rose-500 text-white text-xl w-1/2 mx-auto p-3 rounded-full flex items-center gap-3 justify-center font-[500]"
+        onClick={logOut}
+      >
+        Log out{" "}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1.5rem"
+          height="1.5rem"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h7v2H5v14h7v2zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5z"
+          />
+        </svg>
+      </button>
     </div>
   );
 }
